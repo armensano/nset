@@ -1,4 +1,7 @@
-## Try CI/CD
+## Try CI/CD in GitHub Actions
+
+[]: # Language: markdown
+[]: # Path: README.md
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
