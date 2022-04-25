@@ -17,7 +17,11 @@ jobs:
 
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - name: Use nodeJs version ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       - run: npm i 
       - run: echo finished npm i."
       - run: npm run build
