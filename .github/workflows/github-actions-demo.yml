@@ -33,9 +33,5 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm i 
-      - run: echo "finished npm i."
       - run: npm run build
-      - run: echo "finished npm build."
-      - run: npm run start
-      - run: started the project"
+      - run: pm2 start /home/ec2-user/actions-runner/_work/nset/nset/dist/main.js
