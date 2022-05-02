@@ -3,9 +3,9 @@ on:
   push:
     branches:
       - develop
-  pull_request:
-    branches:
-      - develop
+  # pull_request:
+  #   branches:
+  #     - develop
 env:
   POSTGRES_HOST: database-1.clujym4xkmgv.us-east-1.rds.amazonaws.com
   POSTGRES_PORT: 5432
@@ -30,4 +30,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: npm run build
-      - run: pm2 start /home/ec2-user/actions-runner/_work/nset/nset/dist/main.js
+      - run: pm2 restart all
