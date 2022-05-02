@@ -4,6 +4,6 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
   getHello(): object {
     debugger;
-    return { message: 'another try!' };
+    return { message: 'try until it works!' };
   }
 }
