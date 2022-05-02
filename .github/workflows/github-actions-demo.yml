@@ -3,9 +3,21 @@ on:
   push:
     branches:
       - develop
-  pull_request:
-    branches:
-      - develop
+  # pull_request:
+  #   branches:
+  #     - develop
+env:
+  POSTGRES_HOST: database-1.clujym4xkmgv.us-east-1.rds.amazonaws.com
+  POSTGRES_PORT: 5432
+  DB_TYPE: postgres
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_DATABASE: nset
+  MODE: DEV
+  RUN_MIGRATIONS: true
+  TYPEORM_SYNC: true
+  TYPEORM_LOGGING: true
+  PORT: 3000
 jobs:
   build:
     runs-on: self-hosted
@@ -17,13 +29,5 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Use nodeJs version ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm i 
-      - run: echo "finished npm i."
       - run: npm run build
-      - run: echo "finished npm build."
-      - run: npm run start
-      - run: started the project"
+      - run: pm2 restart all
