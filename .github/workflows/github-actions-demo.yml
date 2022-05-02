@@ -17,9 +17,21 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14
-      - uses: actions/cache@v3
+      - name: cache node modules
+        id: myCacheStep
+        uses: actions/cache@v3
+        env: 
+          cache-name: cache-node-modules
         with:
-          cache: 'npm'
-      - run: npm install
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.npm
+          warn-if-changed: true
+          restore-keys: | 
+            ${{ runner.os }}-build-${{ env.name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}
+      - name: install node modules
+        if: steps.myCacheStep.outputs.cache-hit != 'true'
+        run: npm install
       - run: npm run build
       - run: pm2 restart all
