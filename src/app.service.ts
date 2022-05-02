@@ -4,6 +4,6 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
   getHello(): object {
     debugger;
-    return { message: 'Hello miracle sec!' };
+    return { message: "Let's go further!" };
   }
 }
