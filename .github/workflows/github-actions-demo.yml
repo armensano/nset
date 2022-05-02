@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - develop
-  # pull_request:
-  #   branches:
-  #     - develop
 env:
   POSTGRES_HOST: database-1.clujym4xkmgv.us-east-1.rds.amazonaws.com
   POSTGRES_PORT: 5432
