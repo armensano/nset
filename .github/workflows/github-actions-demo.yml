@@ -17,6 +17,7 @@ jobs:
 
       - name: Cache node modules
         uses: actions/cache@v3
+        id: npm-cache
         env:
           cache-name: cache-node-modules
         with:
@@ -29,6 +30,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install Dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install
 
       - name: Build
